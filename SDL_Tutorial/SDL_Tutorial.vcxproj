@@ -83,6 +83,7 @@
     <ClCompile Include="lesson2.cpp" />
     <ClCompile Include="lesson3.cpp" />
     <ClCompile Include="lesson4.cpp" />
+    <ClCompile Include="lesson5.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mashroom.cpp" />
     <ClCompile Include="res_path.cpp" />
