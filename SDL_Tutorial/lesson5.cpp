@@ -44,7 +44,7 @@ int main(int, char**) {
 	}
 
 	// Loading a Bitmap Image
-	string resPath = getResourcePath("Lesson3");
+	string resPath = getResourcePath("Lesson5");
 	auto *background = loadTexture(resPath + "background.png", renderer);
 	auto *image = loadTexture(resPath + "image.png", renderer);
 	if (!background || !image) {
@@ -54,6 +54,29 @@ int main(int, char**) {
 		SDL_Quit();
 		return 4;
 	}
+
+	//iW and iH are the clip width and height
+	//We'll be drawing only clips so get a center position for the w/h of a clip
+	int iW = 100, iH = 100,
+		x = center(SCREEN_WIDTH, iW),
+		y = center(SCREEN_HEIGHT, iH);
+
+	//Setup the clips for our image
+	const int CLIPS_COUNT = 4;
+	SDL_Rect clips[CLIPS_COUNT];
+
+	//Since our clips our uniform in size we can generate a list of their
+	//positions using some math (the specifics of this are coverd in the lesson)
+	for (int i = 0; i < CLIPS_COUNT; ++i) {
+		auto clip = clips[i];
+		clip.x = half(i) * iW;
+		clip.y = i % 2 * iH;
+		clip.w = iW;
+		clip.h = iH;
+ 	}
+
+	//Specify a default clip to start with 
+	int useClip = 0;
 
 	// Completing the Main Loop
 	// our event structure
