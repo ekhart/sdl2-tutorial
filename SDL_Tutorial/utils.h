@@ -20,6 +20,10 @@ void logSDLError(const string &msg);	// overloading
 
 SDL_Texture* loadTexture(const string &file, SDL_Renderer *renderer);
 
+void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, SDL_Rect destination, SDL_Rect *clip = nullptr);
+
+//void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, SDL_Rect *clip = nullptr);
+
 void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y);
 
 void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, int w, int h);

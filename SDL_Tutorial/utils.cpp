@@ -111,11 +111,11 @@ void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, S
 //
 //	SDL_RenderCopy(renderer, texture, NULL, &destination);
 //}
-void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y) {
-	int w, h;
-	SDL_QueryTexture(texture, NULL, NULL, &w, &h);
-	renderTexture(texture, renderer, x, y, w, h);
-}
+//void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y) {
+//	int w, h;
+//	SDL_QueryTexture(texture, NULL, NULL, &w, &h);
+//	renderTexture(texture, renderer, x, y, w, h);
+//}
 
 // Specifying Width and Height for Rendering
 /**

@@ -101,29 +101,14 @@ int main(int, char**) {
 			}
 		}
 
-		//// render the scene
-		//SDL_RenderClear(renderer);
+		// render the scene
+		SDL_RenderClear(renderer);
 
-		//// Tiling the Background
-		////Determine how many tiles we'll need to fill the screen
-		//int xTiles = SCREEN_WIDTH / TILE_SIZE,
-		//	yTiles = SCREEN_HEIGHT / TILE_SIZE,
-		//	tiles = xTiles * yTiles;
+		//Drawing the image
+		renderTexture(image, renderer, x, y, &clips[useClip]);
 
-		////Draw the tiles by calculationg theri posistions
-		//for (int i = 0; i < tiles; ++i) {
-		//	int x = (i % xTiles) * TILE_SIZE,
-		//		y = (i / xTiles) * TILE_SIZE;
-		//	renderTexture(background, renderer, x, y, TILE_SIZE, TILE_SIZE);
-		//}
-
-		////Drawing the Foreground
-		//auto size = getWidhtAndHeight(image);
-		//int x = center(SCREEN_WIDTH, size.w),
-		//	y = center(SCREEN_HEIGHT, size.h);
-		//renderTexture(image, renderer, x, y);
-
-		//SDL_RenderPresent(renderer);
+		//Update the screen
+		SDL_RenderPresent(renderer);
 	}
 
 	// Cleaning Up
