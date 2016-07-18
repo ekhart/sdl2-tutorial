@@ -51,6 +51,20 @@ SDL_Texture* loadTexture(const string &file, SDL_Renderer *renderer) {
 	return texture;
 }
 
+/**
+* Draw an SDL_Texture to an SDL_Renderer at some destination rect
+* taking a clip of the texture if desired
+* @param texture The source texture we want to draw
+* @param renderer The renderer we want to draw to
+* @param destination The destination rectangle to render the texture to
+* @param clip The sub-section of the texture to draw (cliping rect)
+* default of nullptr draw the entire texture
+*/
+void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, SDL_Rect destination, SDL_Rect *clip = nullptr)
+{
+	SDL_RenderCopy(renderer, texture, clip, &destination);
+}
+
 // The Texture Rendering Function
 /**
 * Draw an SDL_Texture to an SDL_Renderer at position x, y, preserving
