@@ -65,6 +65,33 @@ void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, SDL_Rect destin
 	SDL_RenderCopy(renderer, texture, clip, &destination);
 }
 
+/**
+* Draw an SDL_Texture to an SDL_Renderer at position x, y preserving
+* the texture width and height and taking a clip of the texture if desired
+* @param texture The source texture we want to draw
+* @param renderer The renderer we want to draw to
+* @param x The x coordinate to draw to
+* @param y The y coordinate to draw to
+* @param clip The sub-section of the texture to draw (cliping rect)
+* default of nullptr draw the entire texture
+*/
+void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, SDL_Rect *clip = nullptr)
+{
+	SDL_Rect destination;
+	destination.x = x;
+	destination.y = y;
+
+	if (clip != nullptr) {
+		destination.w = clip->w;
+		destination.h = clip->h;
+	}
+	else {
+		SDL_QueryTexture(texture, NULL, NULL, &destination.w, &destination.h);
+	}
+
+	renderTexture(texture, renderer, destination, clip);
+}
+
 // The Texture Rendering Function
 /**
 * Draw an SDL_Texture to an SDL_Renderer at position x, y, preserving
