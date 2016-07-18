@@ -84,36 +84,46 @@ int main(int, char**) {
 	auto quit = false;
 	while (!quit) {
 		while (SDL_PollEvent(&event)) {
-			quit = event.type == SDL_QUIT
-				|| event.type == SDL_KEYDOWN
-				|| event.type == SDL_MOUSEBUTTONDOWN;
+			quit = event.type == SDL_QUIT;
 
-
+			//Use number input to select which clip should be drawn
+			if (event.type == SDL_KEYDOWN) {
+				switch (event.key.keysym.sym)
+				{
+				case SDLK_1: useClip = 0; break;
+				case SDLK_2: useClip = 1; break;
+				case SDLK_3: useClip = 2; break;
+				case SDLK_4: useClip = 3; break;
+				case SDLK_ESCAPE: quit = true; break;
+				default:
+					break;
+				}
+			}
 		}
 
-		// render the scene
-		SDL_RenderClear(renderer);
+		//// render the scene
+		//SDL_RenderClear(renderer);
 
-		// Tiling the Background
-		//Determine how many tiles we'll need to fill the screen
-		int xTiles = SCREEN_WIDTH / TILE_SIZE,
-			yTiles = SCREEN_HEIGHT / TILE_SIZE,
-			tiles = xTiles * yTiles;
+		//// Tiling the Background
+		////Determine how many tiles we'll need to fill the screen
+		//int xTiles = SCREEN_WIDTH / TILE_SIZE,
+		//	yTiles = SCREEN_HEIGHT / TILE_SIZE,
+		//	tiles = xTiles * yTiles;
 
-		//Draw the tiles by calculationg theri posistions
-		for (int i = 0; i < tiles; ++i) {
-			int x = (i % xTiles) * TILE_SIZE,
-				y = (i / xTiles) * TILE_SIZE;
-			renderTexture(background, renderer, x, y, TILE_SIZE, TILE_SIZE);
-		}
+		////Draw the tiles by calculationg theri posistions
+		//for (int i = 0; i < tiles; ++i) {
+		//	int x = (i % xTiles) * TILE_SIZE,
+		//		y = (i / xTiles) * TILE_SIZE;
+		//	renderTexture(background, renderer, x, y, TILE_SIZE, TILE_SIZE);
+		//}
 
-		//Drawing the Foreground
-		auto size = getWidhtAndHeight(image);
-		int x = center(SCREEN_WIDTH, size.w),
-			y = center(SCREEN_HEIGHT, size.h);
-		renderTexture(image, renderer, x, y);
+		////Drawing the Foreground
+		//auto size = getWidhtAndHeight(image);
+		//int x = center(SCREEN_WIDTH, size.w),
+		//	y = center(SCREEN_HEIGHT, size.h);
+		//renderTexture(image, renderer, x, y);
 
-		SDL_RenderPresent(renderer);
+		//SDL_RenderPresent(renderer);
 	}
 
 	// Cleaning Up
