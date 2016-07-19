@@ -68,11 +68,11 @@ int main(int, char**) {
 	//Since our clips our uniform in size we can generate a list of their
 	//positions using some math (the specifics of this are coverd in the lesson)
 	for (int i = 0; i < CLIPS_COUNT; ++i) {
-		auto clip = clips[i];
-		clip.x = half(i) * iW;
-		clip.y = i % 2 * iH;
-		clip.w = iW;
-		clip.h = iH;
+		auto clip = &clips[i];
+		clip->x = half(i) * iW;
+		clip->y = i % 2 * iH;
+		clip->w = iW;
+		clip->h = iH;
  	}
 
 	//Specify a default clip to start with 
