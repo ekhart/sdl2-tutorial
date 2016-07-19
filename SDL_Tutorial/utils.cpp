@@ -60,7 +60,7 @@ SDL_Texture* loadTexture(const string &file, SDL_Renderer *renderer) {
 * @param clip The sub-section of the texture to draw (cliping rect)
 * default of nullptr draw the entire texture
 */
-void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, SDL_Rect destination, SDL_Rect *clip = nullptr)
+void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, SDL_Rect destination, SDL_Rect *clip)
 {
 	SDL_RenderCopy(renderer, texture, clip, &destination);
 }
@@ -75,7 +75,7 @@ void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, SDL_Rect destin
 * @param clip The sub-section of the texture to draw (cliping rect)
 * default of nullptr draw the entire texture
 */
-void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, SDL_Rect *clip = nullptr)
+void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, SDL_Rect *clip)
 {
 	SDL_Rect destination;
 	destination.x = x;

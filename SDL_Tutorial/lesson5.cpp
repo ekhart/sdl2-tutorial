@@ -26,7 +26,7 @@ int main(int, char**) {
 	}
 
 	// opening a window
-	auto *window = SDL_CreateWindow("Lesson 2", 100, 100, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	auto *window = SDL_CreateWindow("Lesson 5", 100, 100, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	if (!window) {
 		logSDLError("SDL_CreateWindow");
 		SDL_Quit();
