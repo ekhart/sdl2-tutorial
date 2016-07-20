@@ -153,3 +153,41 @@ int half(int x) {
 int center(int a, int b) {
 	return half(a) - half(b);
 }
+
+/**
+* Render the message we want to display to a texture for drawing
+* @param message The message we want to display
+* @param fontFile The font we want to use to render the text
+* @param color The color we want the text to be
+* @param fontSize The size we want the font to be
+* @param renderer The renderer to load the texture in
+* @return An SDL_Texture containing the rendered message, or nullptr if somtehing went wrong
+*/
+SDL_Texture* renderText(const std::string &message, const std::string &fontFile, SDL_Color color, int fontSize, SDL_Renderer *renderer) {
+	// Open the font
+	TTF_Font *font = TTF_OpenFont(fontFile.c_str(), fontSize);
+	if (font == nullptr) {
+		logSDLError("TTF_OpenFont");
+		return nullptr;
+	}
+
+	// We need to first render to a surface as that's what TTF_RenderText
+	//return, then load that surface into a texture
+	SDL_Surface *surface = TTF_RenderText_Blended(font, message.c_str(), color);
+	if (surface == nullptr) {
+		TTF_CloseFont(font);
+		logSDLError("TTF_RenderText_Blended");
+		return nullptr;
+	}
+
+	SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+	if (texture == nullptr) {
+		logSDLError("SDL_CreateTextureFromSurface");
+	}
+
+	//clean up the surface and font
+	SDL_FreeSurface(surface);
+	TTF_CloseFont(font);
+
+	return texture;
+}

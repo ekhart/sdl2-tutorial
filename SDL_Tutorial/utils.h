@@ -5,6 +5,7 @@
 #include <string>
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 using namespace std;
 
@@ -35,5 +36,7 @@ SDL_Rect getWidhtAndHeight(SDL_Texture *texture);
 int half(int x);
 
 int center(int a, int b);
+
+SDL_Texture* renderText(const std::string &message, const std::string &fontFile, SDL_Color color, int fontSize, SDL_Renderer *renderer);
 
 #endif
