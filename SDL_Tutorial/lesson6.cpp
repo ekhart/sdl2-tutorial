@@ -69,6 +69,18 @@ int main(int, char**) {
 	int x = center(SCREEN_WIDTH, iW),
 		y = center(SCREEN_HEIGHT, iH);
 
+	// Note: this is within the program's main loop
+	SDL_RenderClear(renderer);
+
+	// We can draw our message as we do any other texture, sicne it's been
+	// rendered to a texture
+	renderTexture(image, renderer, x, y);
+	SDL_RenderPresent(renderer);
+
+	// get input to wait, then quit program
+	int wait;
+	cin >> wait;
+
 	// Cleaning Up
 	cleanup(image, renderer, window);
 	IMG_Quit();

@@ -75,22 +75,22 @@ void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, SDL_Rect destin
 * @param clip The sub-section of the texture to draw (cliping rect)
 * default of nullptr draw the entire texture
 */
-void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, SDL_Rect *clip)
-{
-	SDL_Rect destination;
-	destination.x = x;
-	destination.y = y;
-
-	if (clip != nullptr) {
-		destination.w = clip->w;
-		destination.h = clip->h;
-	}
-	else {
-		SDL_QueryTexture(texture, NULL, NULL, &destination.w, &destination.h);
-	}
-
-	renderTexture(texture, renderer, destination, clip);
-}
+//void renderTexture(SDL_Texture *texture, SDL_Renderer *renderer, int x, int y, SDL_Rect *clip)
+//{
+//	SDL_Rect destination;
+//	destination.x = x;
+//	destination.y = y;
+//
+//	if (clip != nullptr) {
+//		destination.w = clip->w;
+//		destination.h = clip->h;
+//	}
+//	else {
+//		SDL_QueryTexture(texture, NULL, NULL, &destination.w, &destination.h);
+//	}
+//
+//	renderTexture(texture, renderer, destination, clip);
+//}
 
 // The Texture Rendering Function
 /**
